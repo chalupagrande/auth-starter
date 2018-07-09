@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #3D70B2;
+  border-bottom: 2px solid #5aaafa; }
+
+.menu {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  font-weight: 300; }
+  .menu__item {
+    padding: 1em; }
+  .menu__item:hover {
+    background-color: white;
+    color: #3D70B2;
+    transition: background-color 0.2s, color 0.2s; }

@@ -1,0 +1,33 @@
+@import '../../clientHelpers/mixins';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  background-color: $dark-blue;
+  border-bottom: 2px solid $blue;
+}
+
+.menu {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  font-weight: 300;
+
+  
+
+  &__item {
+    padding: 1em;
+  }
+
+  &__item:hover {
+    background-color: white;
+    color: $dark-blue;
+    transition: background-color 0.2s, color 0.2s;
+  }
+}

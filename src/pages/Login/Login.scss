@@ -1,0 +1,13 @@
+@import '../../styles/mixins';
+
+.forgot-password {
+  font-size: 11px;
+  font-style: italic;
+}
+
+.password-label {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
