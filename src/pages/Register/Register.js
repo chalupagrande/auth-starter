@@ -84,7 +84,7 @@ class Register extends React.Component {
     if(s && s.credentials.token){
       if(s.credentials.email_confirmed) {
         // if their email is confirmed, redirect them to profile
-        return <Redirect to={`/profile/${s.credentials.id}`}/>
+        return <Redirect to={`/u/${s.credentials.id}`}/>
       } else {
         //otherwise redirect them to email confirmation page
         return <Redirect to={`/email-confirmation`}/>

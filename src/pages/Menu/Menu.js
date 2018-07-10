@@ -21,7 +21,7 @@ class Menu extends React.Component {
     let LoginOrProfileLink
     if(s.credentials.token){
       let Trigger = (props) => <li className="menu__item"><UserSvg fill='white' isHovered={props.isHovered}/></li>
-      let Menu = (props) => <ProfileDropdownMenu profileLink={`/profile/${s.credentials.id}`} accountLink={`/account/${s.credentials.id}`}/>
+      let Menu = (props) => <ProfileDropdownMenu profileLink={`/u/${s.credentials.id}`} accountLink={`/account/${s.credentials.id}`}/>
       LoginOrProfileLink = <Dropdown menu={Menu} trigger={Trigger}/>
     } 
     else LoginOrProfileLink = <NavLink to="/login" tabIndex="0"><li className="menu__item">Login</li></NavLink>

@@ -28,7 +28,7 @@ class EmailConfirmation extends React.Component {
 
         <h4>Didn't recieve it? </h4>
         <button onClick={this.resendEmail}>Resend Confirmation Email</button>
-        <Link to={`/profile/${s.credentials.id}`}><button>Continue to Profile</button></Link>
+        <Link to={`/u/${s.credentials.id}`}><button>Continue to Profile</button></Link>
       </div>
     )
   }

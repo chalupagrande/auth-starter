@@ -17,7 +17,7 @@ app.use(passport.initialize());
 
 const port = process.env.PORT || 4000;
 
-const frontEndRoutes = ["/", "/login", "/register", "/profile/*", "/reset-password/*", "/token/*", '/forgot-password', '/email-confirmation'];
+const frontEndRoutes = ["/", "/login", "/register", "/u/*", "/reset-password/*", "/token/*", '/forgot-password', '/email-confirmation'];
 frontEndRoutes.map(route => app.use(route, express.static("public")));
 
 app.use('/api/auth', AuthRouter)

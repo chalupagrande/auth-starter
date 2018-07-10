@@ -1,7 +1,6 @@
 import React from 'react'
 import store from '../../store'
 import Profile from '../../components/Profile/Profile'
-import Account from '../Account/Account'
 import {Redirect} from 'react-router-dom'
 
 

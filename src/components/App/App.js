@@ -41,7 +41,7 @@ class App extends React.Component {
               <Route path="/forgot-password" component={ResetPasswordEmailPrompt}/>
               <Route path="/reset-password/:token" component={PasswordReset}/>
               <PrivateRoute path="/email-confirmation" component={EmailConfirmation}/>
-              <PrivateRoute path='/profile/:userId' component={ProfilePage}/>
+              <PrivateRoute path='/u/:userId' component={ProfilePage}/>
               <PrivateRoute path='/account/:userId' component={Account}/>
               <Route component={NoMatch}/>
             </Switch>
