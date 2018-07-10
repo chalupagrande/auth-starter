@@ -1,0 +1,12 @@
+.menu-dropdown {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  width: 150px;
+  z-index: 100; }
+
+.menu-dropdown > * {
+  cursor: pointer;
+  padding: 0.5em 1em; }
+  .menu-dropdown > *:not(:first-child) {
+    border-top: 1px solid rgba(27, 31, 35, 0.15); }

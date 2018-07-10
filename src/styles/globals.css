@@ -3,7 +3,8 @@
   top: 52px;
   left: 0;
   width: 100vw;
-  height: calc(100vh - 52px); }
+  height: calc(100vh - 52px);
+  z-index: -1; }
 
 .center {
   position: absolute;

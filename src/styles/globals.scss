@@ -1,9 +1,12 @@
+@import './mixins';
+
 .wrapper {
   position: absolute;
-  top: 52px;
+  top: 52px; // height of menu bar. + 2px border
   left: 0;
   width: 100vw;
   height: calc(100vh - 52px);
+  z-index: -1;
 }
 
 .center {

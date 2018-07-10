@@ -19,15 +19,17 @@
   color: white;
   font-weight: 300;
 
-  
+  & > * {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100%;
+    align-items: center;
+    padding: 0 1em;
 
-  &__item {
-    padding: 1em;
-  }
-
-  &__item:hover {
-    background-color: white;
-    color: $dark-blue;
-    transition: background-color 0.2s, color 0.2s;
+    &:hover {
+      background-color: white;
+      color: $dark-blue;
+      transition: background-color 0.2s, color 0.2s;
+    }
   }
 }
