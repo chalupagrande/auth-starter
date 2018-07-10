@@ -68,19 +68,19 @@ class Login extends React.Component {
         <form className="form" onSubmit={this.handleSubmit}>
           <div className="form__input-group">
             <label htmlFor="email">Email:</label>
-            <input id="email" type="email" size="30" onChange={this.handleChange}/>
+            <input id="email" type="email" size="30" onChange={this.handleChange} tabIndex='1'/>
           </div>
           <div className="form__input-group">
             <div className="password-label">
               <label htmlFor="password">Password:</label>
-              <Link to='/forgot-password' className="forgot-password">Forgot Password</Link>
+              <Link to='/forgot-password' className="forgot-password" tabIndex='2'>Forgot Password</Link>
             </div>
-            <input id="password" type="password" size="30" onChange={this.handleChange} ref={n=> this.passwordInput = n}/>
+            <input id="password" type="password" size="30" onChange={this.handleChange} ref={n=> this.passwordInput = n} tabIndex='1'/>
           
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" tabIndex='1'>Submit</button>
         </form>
-        <Link to='/register' className="small italic">Not yet a member? Register here!</Link>
+        <Link to='/register' className="small italic" tabIndex='1'>Not yet a member? Register here!</Link>
       </div>
     )
   }
