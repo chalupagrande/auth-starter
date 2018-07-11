@@ -12,7 +12,6 @@ class ProfilePage extends React.Component {
     return(
       <div className="profile">
         <Profile credentials={s.credentials} {...this.props}/>
-        <p>This is the profile page. Something important to the user can be displayed here </p>
       </div>
     )
   }

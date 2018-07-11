@@ -47,7 +47,7 @@ class ChangePasswordForm extends React.Component {
       data: this.state
     })
     .then(r =>{
-      alert('Credentials has been changed')
+      alert('Credentials has been changed. You will be signed out.')
       // handleToken(r.data.token)
       signOut()
     })

@@ -5,7 +5,7 @@ const AuthRouter = express.Router()
 const transporter = require('../connections/mailer')
 const {passport, verifyAuthenticationToken} = require('../middleware')
 const {secret} = require('../serverHelpers/secrets')
-const {handleError, handleToken} = require('../serverHelpers/serverHelpers')
+const {handleError, handleToken, sendEmailConfirmation} = require('../serverHelpers/serverHelpers')
 const emailTemplates = require('../serverHelpers/EmailTemplates')
 const {tokenExpirationTime, emailConfirmationTokenExpiration, clientURL, serverURL} = require('../serverHelpers/config')
 
@@ -215,6 +215,7 @@ AuthRouter.get('/reset-password/:token', (req, res)=>{
   })
 })
 
+
 AuthRouter.put('/reset-password', verifyAuthenticationToken, (req, res)=>{
   const {decodedToken} = req.locals
   User.findOne({email: decodedToken.email}, (err, user)=>{
@@ -229,28 +230,5 @@ AuthRouter.put('/reset-password', verifyAuthenticationToken, (req, res)=>{
     }
   })
 })
-
-
-
-/**
- * Sends email confirmation link to users email. 
- * @param {object} credentials : Users credentials to sign into the token. 
- */
-function sendEmailConfirmation(credentials){
-  return new Promise((resolve, reject)=>{
-    let {email, fname, lname, id} = credentials
-    let tokenToSend = jwt.sign({email, fname, lname, id}, secret, {expiresIn: emailConfirmationTokenExpiration})
-    let link = `${serverURL}/api/auth/email-confirmation/${tokenToSend}`
-  
-    transporter.sendMail({
-      to: email,
-      subject: 'Confirmation Email',
-      html: emailTemplates.confirmationEmailHTML(email, link),
-      text: emailTemplates.confirmationEmailText(email, link)
-    })
-      .then(r => resolve(r))
-      .catch(err => reject(err))
-  })
-}
 
 module.exports = AuthRouter

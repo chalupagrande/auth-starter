@@ -39,7 +39,7 @@ class ChangeEmailForm extends React.Component {
       data: this.state
     })
     .then(r =>{
-      alert('Credentials has been changed')
+      alert('Credentials has been changed. You will need to reconfirm your email to change your credentials again.')
       handleToken(r.data.token)
     })
     .catch(err => {
