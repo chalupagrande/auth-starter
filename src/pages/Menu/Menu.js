@@ -20,18 +20,20 @@ class Menu extends React.Component {
     let s = store.getState()
     let LoginOrProfileLink
     if(s.credentials.token){
-      let Trigger = (props) => <li><UserSvg fill='white' isHovered={props.isHovered}/></li>
+      let Trigger = (props) => <UserSvg fill='white' isHovered={props.isHovered}/>
       let Menu = (props) => <ProfileDropdownMenu profileLink={`/u/${s.credentials.id}`} accountLink={`/account/${s.credentials.id}`}/>
-      LoginOrProfileLink = <Dropdown menu={Menu} trigger={Trigger} bufferTop={10}/>
+      LoginOrProfileLink = (props) => <Dropdown menu={Menu} 
+                                                trigger={Trigger} 
+                                                triggerClass='menu-item__element'/>
     } 
-    else LoginOrProfileLink = <NavLink to="/login" tabIndex="0"><li className="menu__item">Login</li></NavLink>
+    else LoginOrProfileLink = (props) => <NavLink className="menu-item__element" to="/login" tabIndex="0"><li className="menu__item">Login</li></NavLink>
 
     return(
       <header className="header">
         <img src="http://placehold.it/50x50" alt="logo"/>
         <ul className="menu">
-          <NavLink to="/"><li className="menu__item">Home</li></NavLink>
-          {LoginOrProfileLink}
+          <li className="menu-item"><NavLink className="menu-item__element" to="/">Home</NavLink></li>
+          <li className="menu-item"><LoginOrProfileLink/></li>
         </ul>
       </header>
     )

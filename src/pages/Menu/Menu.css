@@ -15,13 +15,20 @@
   align-items: center;
   color: white;
   font-weight: 300; }
-  .menu > * {
+  .menu .menu-item {
     display: flex;
     flex-flow: row nowrap;
     height: 100%;
-    align-items: center;
-    padding: 0 1em; }
-  .menu > a:hover {
-    background-color: white;
-    color: #3D70B2;
-    transition: background-color 0.2s, color 0.2s; }
+    align-items: center; }
+    .menu .menu-item:hover, .menu .menu-item .isHovered {
+      background-color: white;
+      color: #3D70B2;
+      transition: background-color 0.2s, color 0.2s; }
+    .menu .menu-item .menu-item__element {
+      display: flex;
+      flex-flow: row nowrap;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1em;
+      cursor: pointer; }

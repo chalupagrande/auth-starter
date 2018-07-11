@@ -26,6 +26,14 @@
   }
 }
 
+.center-fill {
+  display: flex;
+  flex-flow: row nowrap;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
 // TYPOGRAPHY 
 strong {
   font-weight: 600;
