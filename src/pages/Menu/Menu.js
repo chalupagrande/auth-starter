@@ -20,9 +20,9 @@ class Menu extends React.Component {
     let s = store.getState()
     let LoginOrProfileLink
     if(s.credentials.token){
-      let Trigger = (props) => <li className="menu__item"><UserSvg fill='white' isHovered={props.isHovered}/></li>
+      let Trigger = (props) => <li><UserSvg fill='white' isHovered={props.isHovered}/></li>
       let Menu = (props) => <ProfileDropdownMenu profileLink={`/u/${s.credentials.id}`} accountLink={`/account/${s.credentials.id}`}/>
-      LoginOrProfileLink = <Dropdown menu={Menu} trigger={Trigger}/>
+      LoginOrProfileLink = <Dropdown menu={Menu} trigger={Trigger} bufferTop={10}/>
     } 
     else LoginOrProfileLink = <NavLink to="/login" tabIndex="0"><li className="menu__item">Login</li></NavLink>
 
@@ -32,7 +32,6 @@ class Menu extends React.Component {
         <ul className="menu">
           <NavLink to="/"><li className="menu__item">Home</li></NavLink>
           {LoginOrProfileLink}
-          
         </ul>
       </header>
     )

@@ -21,7 +21,7 @@
     height: 100%;
     align-items: center;
     padding: 0 1em; }
-    .menu > *:hover {
-      background-color: white;
-      color: #3D70B2;
-      transition: background-color 0.2s, color 0.2s; }
+  .menu > a:hover {
+    background-color: white;
+    color: #3D70B2;
+    transition: background-color 0.2s, color 0.2s; }

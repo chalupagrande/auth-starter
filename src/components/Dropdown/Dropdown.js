@@ -6,30 +6,70 @@ class Dropdown extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      isOpen: false,
+      isOpen: true,
       isHovered: false,
+      menuStyle: {}
     }
+    
+
+    this.triggerPos = {}
+    this.menuPos = {}
+
     this.mouseEnter = this.mouseEnter.bind(this)
     this.mouseLeave = this.mouseLeave.bind(this)
+    this.onClick = this.onClick.bind(this)
+    this.determineDropdownPosition = this.determineDropdownPosition.bind(this)
+    //this.trigger
+  }
+
+  componentDidMount(){
+    this.determineDropdownPosition()
+  }
+  onClick(){
+    if(this.state.isOpen){
+      this.setState(Object.assign(this.state, {isOpen: false, isHovered: false}))
+    } else {
+      this.setState(Object.assign(this.state, {isOpen: true, isHovered: true}))
+    }
   }
 
   mouseEnter(){
-    this.setState(Object.assign(this.state, {isHovered: true, isOpen:true}))
+    this.setState(Object.assign(this.state, {isHovered: true}))
   }
 
   mouseLeave(){
-    this.setState(Object.assign(this.state, {isHovered: false, isOpen: false}))
+    if(!this.state.isOpened){
+      this.setState(Object.assign(this.state, {isHovered: false}))
+    }
+  }
+
+  determineDropdownPosition(){
+    this.triggerPos = this.trigger.getBoundingClientRect()
+    this.menuPos = this.menu.getBoundingClientRect()
+    const side = this.triggerPos.x <= (window.innerWidth/2) ? 'left' : 'right';
+    const style = {
+      top: this.triggerPos.y + this.triggerPos.height + (this.props.bufferTop || 0),
+    }
+    style[side] = 0 + (side === 'left' ? (this.props.bufferLeft || 0) : -this.props.bufferLeft || 0)
+    this.setState(Object.assign(this.state, {isOpen: false, menuStyle: style}))
   }
 
   render() {
     const Trigger = this.props.trigger
     const Menu = this.props.menu
+    console.log(this.state)
     return (
-      <div className="dropdown" onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
-        <div className="dropdown-trigger">
+      <div className="dropdown" 
+          onMouseEnter={this.mouseEnter} 
+          onMouseLeave={this.mouseLeave} 
+          onClick={this.onClick}>
+        <div className="dropdown-trigger" 
+            ref={n=>this.trigger = n}>
           <Trigger isHovered={this.state.isHovered}/>
         </div>
-        <div className={`dropdown-menu ${this.state.isOpen ? 'isOpen':''}`}>
+        <div className={`dropdown-menu ${this.state.isOpen ? 'isOpen':''}`} 
+            style={this.state.menuStyle}
+            ref={n=> this.menu = n}>
           <Menu />
         </div>
       </div>
@@ -38,7 +78,10 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.propTypes = {
-
+  trigger: PropTypes.func.isRequired,
+  menu: PropTypes.func.isRequired,
+  bufferTop: PropTypes.number,
+  bufferLeft: PropTypes.number,
 }
 
 export default Dropdown

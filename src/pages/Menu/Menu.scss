@@ -25,11 +25,10 @@
     height: 100%;
     align-items: center;
     padding: 0 1em;
-
-    &:hover {
-      background-color: white;
-      color: $dark-blue;
-      transition: background-color 0.2s, color 0.2s;
-    }
+  }
+  & > a:hover {
+    background-color: white;
+    color: $dark-blue;
+    transition: background-color 0.2s, color 0.2s;
   }
 }

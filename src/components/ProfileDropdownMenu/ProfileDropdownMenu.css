@@ -3,7 +3,7 @@
   flex-flow: column nowrap;
   justify-content: space-between;
   width: 150px;
-  z-index: 100; }
+  color: #3D70B2; }
 
 .menu-dropdown > * {
   cursor: pointer;
