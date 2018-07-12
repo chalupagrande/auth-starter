@@ -137,6 +137,7 @@ AuthRouter.get('/email-confirmation/:token', (req, res)=>{
     jwt.verify(token, secret, (err, decoded)=>{
       if(err){
         if(err.message === 'invalid token') res.status(403).send('Invalid Token')
+        else if(err.message === "jwt expired") res.redirect(`${clientURL}/error`)
         else return handleError(err, res, 1009)
       } else {
         User.findOneAndUpdate({email: decoded.email}, 

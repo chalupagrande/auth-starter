@@ -19,12 +19,8 @@
   .form button[type=submit], .form__input-group button[type=submit] {
     margin-top: 2em; }
 
-.center-fill {
-  display: flex;
-  flex-flow: row nowrap;
-  height: 100%;
-  width: 100%;
-  align-items: center; }
+.indent {
+  margin: 1rem; }
 
 strong {
   font-weight: 600; }

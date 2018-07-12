@@ -6,6 +6,7 @@ import Login from '../../pages/Login/Login'
 import Register from '../../pages/Register/Register'
 import Menu from '../../pages/Menu/Menu'
 import Home from '../Home/Home'
+import Error from '../Error/Error'
 import Account from '../../pages/Account/Account'
 import CaptureToken from '../CaptureToken/CaptureToken'
 import ProfilePage from '../../pages/ProfilePage/ProfilePage'
@@ -43,6 +44,7 @@ class App extends React.Component {
               <PrivateRoute path="/email-confirmation" component={EmailConfirmation}/>
               <PrivateRoute path='/u/:userId' component={ProfilePage}/>
               <PrivateRoute path='/account/:userId' component={Account}/>
+              <Route path="/error" component={Error}/>
               <Route component={NoMatch}/>
             </Switch>
           </div>
