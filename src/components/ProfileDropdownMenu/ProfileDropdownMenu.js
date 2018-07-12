@@ -7,9 +7,9 @@ class ProfileDropdownMenu extends React.Component {
   render(){
     return (
       <ul className='menu-dropdown'>
-        <NavLink to={this.props.profileLink}>Profile</NavLink>
-        <NavLink to={this.props.accountLink}>Account</NavLink>
-        <li onClick={signOut}>Sign Out</li>
+        <li><NavLink to={this.props.profileLink}>Profile</NavLink></li>
+        <li><NavLink to={this.props.accountLink}>Account</NavLink></li>
+        <li onClick={signOut}><a>Sign Out</a></li>
       </ul>
     )
   }

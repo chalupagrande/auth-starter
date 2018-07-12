@@ -1,6 +1,6 @@
 import React from 'react'
 import {axiosWCreds, serverURL, handleError} from '../../clientHelpers/clientHelpers'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import store from '../../store'
 
 class EmailConfirmation extends React.Component {
@@ -28,6 +28,7 @@ class EmailConfirmation extends React.Component {
   render() {
     let s = store.getState()
     if(this.state.isLoading) return <p>Please wait. Sending email...</p>
+    if(!s.credentials.token) return <Redirect to='/'/>
     return(
       <div className="email-confirmation">
         <h1>Email Confirmation</h1>
