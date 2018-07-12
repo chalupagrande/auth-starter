@@ -26,7 +26,7 @@ class Menu extends React.Component {
                                                 trigger={Trigger} 
                                                 triggerClass='menu-item__element'/>
     } 
-    else LoginOrProfileLink = (props) => <NavLink className="menu-item__element" to="/login" tabIndex="0">Login</NavLink>
+    else LoginOrProfileLink = (props) => <NavLink className="menu-item__element" to="/login" tabIndex="0">Login / Register</NavLink>
 
     return(
       <header className="header">
