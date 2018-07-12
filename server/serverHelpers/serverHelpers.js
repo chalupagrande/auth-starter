@@ -3,6 +3,9 @@ const jwt = require('jsonwebtoken')
 const {secret} = require('./secrets')
 const {tokenExpirationTime} = require('./config')
 const ErrorCodes = require('./ErrorCodes')
+const {emailConfirmationTokenExpiration, serverURL} = require('./config')
+const emailTemplates = require('./EmailTemplates')
+const transporter = require('../connections/mailer')
 
 /**
  * Sends email confirmation link to users email. 

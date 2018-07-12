@@ -2,9 +2,6 @@
 
 1) Change AuthRouter `/` to a `/profile` route. and use the verify Token middleware. This will be used when serving from the server as well..You can eliminate the other logic for verifying the token on the front end. 
 
-2) Add to confirmation screen at what time the email was sent. Giving them 10 minutes to click the link. This way you dont have to send an email every time they log in. 
-  - add an expiration for the token. 
-
 - Mailer Response codes: `err.responseCode`
   - 421: too many requests per day
   - 535: Invalid login for emails

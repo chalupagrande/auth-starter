@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 function confirmationEmailHTML(email, linkWithToken){
   return (`
 <!DOCTYPE html>
@@ -5,6 +7,7 @@ function confirmationEmailHTML(email, linkWithToken){
 <body>
   <h1>Confirm your email address</h1>
   <p>Hello! We just need to verify that <strong>${email}</strong> is your email address. This will help us in the future to verify your identity.</p>
+  <p>Note: This process should be done within 10 minutes of ${moment().format('MMMM Do YYYY, h:mm a')}, otherwise you will need to request another verification email.</p> 
   <a href=${linkWithToken}>Confirm Email Address</a>
   <br/>
   <strong>Didn't request this email?</strong>
@@ -18,6 +21,7 @@ function confirmationEmailText(email, linkWithToken){
   return (`
   Confirm your email address
   Hello! We just need to verify that ${email} is your email address. This will help us in the future to verify your identity.
+  Note: This process should be done within 10 minutes of ${moment().format('MMMM Do YYYY, h:mm a')}, otherwise you will need to request another verification email.
   Please copy paste this link into your browser to confirm your email: 
 
   ${linkWithToken}
