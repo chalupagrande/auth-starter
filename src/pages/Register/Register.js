@@ -6,7 +6,7 @@ import {serverURL,
         handleToken,
         handleError,
         validName,
-        validPassword, 
+        validPassword,
         validEmail
       } from '../../clientHelpers/clientHelpers'
 
@@ -31,8 +31,12 @@ class Register extends React.Component {
    * @param {Array} inputs : Array of inputs to clear. The first of which will recieve focus.
    */
   clear(inputs){
-    inputs.forEach(e => this.form.querySelector(`#${e}`).value = '')
-    this.form.querySelector(`#${inputs[0]}`).focus()
+
+    let toClear = {};
+    inputs.forEach(input => {toClear[input] = ''});
+    this.setState(toClear);
+
+    this.form.querySelector('input').focus() // should return first input element anyway, since it's querySelector and not querySelectorAll
   }
 
   handleChange(e){
@@ -49,15 +53,15 @@ class Register extends React.Component {
     if(!validEmail(this.state.email)){
       this.clear(['email', 'password', 'confirm'])
       return alert('Invalid Email')
-    } 
+    }
     if(!validPassword(this.state.password)){
       this.clear(['password', 'confirm'])
       return alert('Invalid password')
-    } 
+    }
     if(!validName(this.state.name)) return alert('Invalid characters found in name.')
 
-    
-    //split name up 
+
+    //split name up
     let splitName = this.state.name.split(' ')
     let data = Object.assign(this.state, {fname: splitName[0], lname: splitName.slice(1).join(' ')})
     //send request
@@ -94,24 +98,47 @@ class Register extends React.Component {
     return(
       <div className="center">
         <h1>Sign Up</h1>
-        <form className="form" id="register" onSubmit={this.handleSubmit} ref={n=> this.form = n}>        
+        <form className="form" id="register" onSubmit={this.handleSubmit} ref={n=> this.form = n}>
           <div className="form__input-group">
             <label htmlFor="name">Full Name:</label>
-            <input id="name" type="text" required onChange={this.handleChange}/>
+            <input
+              id="name"
+              type="text"
+              required
+              onChange={this.handleChange}
+              value={this.state.name}/>
           </div>
           <div className="form__input-group">
             <label htmlFor="email">Email:</label>
-            <input id="email" type="email" required onChange={this.handleChange}/>
+            <input
+              id="email"
+              type="email"
+              required
+              onChange={this.handleChange}
+              value={this.state.email}/>
           </div>
           <div className="form__input-group">
             <label htmlFor="password">Password:</label>
-            <input id="password" type="password" required onChange={this.handleChange}/>
+            <input
+              id="password"
+              type="password"
+              required
+              onChange={this.handleChange}
+              value={this.state.password}/>
           </div>
           <div className="form__input-group">
             <label htmlFor="confirm">Confirm Password:</label>
-            <input id="confirm" type="password" required onChange={this.handleChange}/>
+            <input
+              id="confirm"
+              type="password"
+              required
+              onChange={this.handleChange}
+              value={this.state.confirm}/>
           </div>
-          <button type="submit">Submit</button>
+          <div className="row">
+            <button onClick={this.clear.bind(this, ['name','email', 'password','confirm'])}>Clear</button>
+            <button type="submit">Submit</button>
+          </div>
         </form>
         <Link to="/login" className="small italic">Already a member? Login here.</Link>
       </div>
@@ -119,4 +146,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register
+export default Register;
